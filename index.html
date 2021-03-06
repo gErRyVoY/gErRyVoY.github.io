@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>KabilOA | Mapa sustentable</title>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta name="description" content="Localiza personas que ofecen productos y servicios amigables con el medio ambiente o que promueven el cuidado del mismo: como agricultura org&aacute;nica, bioconstrucci&oacute;n, medicina alternativa, entre otros.">
+		<meta name="author" content="KabilOA Comunidad Sustentable">
+		<meta name="keywords" content="kabiloa, mapa sustentable, productos y servicios amigables con el medio ambiente,  agricultura organica, alimentos saludables, bioconstruccion, ecoespacios, ecoturismo, medicina alternativa, monedas comunitarias, tecnologías sustentables">
+		<meta name="robots" content="index, follow" />
+		<link rel="icon" href="img/favicon.gif">
+		<link rel="stylesheet" href="css/estilos.css">
+		<link rel="stylesheet" href="css/fonts.css">
+		<meta name="google-site-verification" content="w8BBxu7gfL7RC1KQCxjhew-WNGWoR3WBxs2mnIQShDs" />
+		<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyCvFoKSFcKZGVmrHqIO_MIx3YsFnFgRC00"></script>
+        <meta name="p:domain_verify" content="bac82e4c407bdf21e2b32f82a4fcb764"/>
+		
+	</head>
+	
+	<body onLoad="initialize()">
+	
+		<header class="main_header">
+			<a href="/"><img src="img/kabiloa_logo_2.png" alt="KabilOA" class="logo_img"></a>
+			<div class="contenedor">
+				<h1 class="titulo_empresa">KabilOA</h1>
+				<h4 class="comunidad">Comunidad Sustentable</h4>
+				<h5 class="slogan">Sembrando el cambio</h5>
+			</div>
+			<span class="icon-menu" id="btn_menu"></span>
+			<nav class="menu" id="nav">
+				<ul>
+					<li><a href="/" class="menu_link select">mapa</a></li>
+					<li><a href="calendario" class="menu_link">eventos</a></li>
+					<li><a href="contenido#nosotros" class="menu_link">nosotros</a></li>
+					<li><a href="contenido#origen" class="menu_link">origen</a></li>
+					<li><a href="contenido#ofrecemos" class="menu_link">ofrecemos</a></li>
+					<li><a href="contenido#contacto" class="menu_link">contacto</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<main class="main">
+			<div id="googft-mapCanvas"></div>
+			<div class="categorias">
+				<span class="icon-catego" id="btn_catego">&nbsp;&nbsp;&nbsp;&nbsp;Categor&iacute;as</span>
+				<nav class="listacat" id="listcat">
+					<form>
+						<ul>
+							<li>
+								<label class="container">
+									<input type="checkbox" value="todos" id="todos" onClick="muestracatego(this.value);" checked>
+									<span class="checkmark"></span>
+									<span class="nombre_catego">Todos</span>
+								</label>
+							</li>
+							<li>
+								<label class="container">
+									<input type="checkbox" value="agricultura" id="agricultura" onclick="muestracatego(this.value);" checked>
+									<span class="checkmark"></span>
+									<span class="nombre_catego">Agricultura org&aacute;nica</span>
+								</label>
+							</li>
+							<li>
+								<label class="container">
+									<input type="checkbox" value="alimentos" id="alimentos" onclick="muestracatego(this.value);" checked>
+									<span class="checkmark"></span>
+									<span class="nombre_catego">Alimentos saludables</span>
+								</label>
+							</li>
+							<li>
+								<label class="container">
+									<input type="checkbox" value="artecult" id="artecult" onclick="muestracatego(this.value);" checked>
+									<span class="checkmark"></span>
+									<span class="nombre_catego">Arte y cultura</span>
+								</label>
+							</li>
+							<li>
+								<label class="container">
+									<input type="checkbox" value="artesanias" id="artesanias" onclick="muestracatego(this.value);" checked>
+									<span class="checkmark"></span>
+									<span class="nombre_catego">Artesanías</span>
+								</label>
+							</li>
+							<li>
+								<label class="container">
+									<input type="checkbox" value="bioconstruccion" id="bioconstruccion" onclick="muestracatego(this.value);" checked>
+									<span class="checkmark"></span>
+									<span class="nombre_catego">Bioconstrucci&oacute;n</span>
+								</label>
+							</li>
+							<li>
+								<label class="container">
+									<input type="checkbox" value="ecoespacios" id="ecoespacios" onclick="muestracatego(this.value);" checked>
+									<span class="checkmark"></span>
+									<span class="nombre_catego">Ecoespacios</span>
+								</label>
+							</li>
+							<li>
+								<label class="container">
+									<input type="checkbox" value="ecoturismo" id="ecoturismo" onclick="muestracatego(this.value);" checked>
+									<span class="checkmark"></span>
+									<span class="nombre_catego">Ecotur&iacute;smo</span>
+								</label>
+							</li>
+							<li>
+								<label class="container">
+									<input type="checkbox" value="medicina" id="medicina" onclick="muestracatego(this.value);" checked>
+									<span class="checkmark"></span>
+									<span class="nombre_catego">Medicina alternativa</span>
+								</label>
+							</li>
+							<li>
+								<label class="container">
+									<input type="checkbox" value="monedas" id="monedas" onclick="muestracatego(this.value);" checked>
+									<span class="checkmark"></span>
+									<span class="nombre_catego">Monedas comunitarias</span>
+								</label>
+							</li>
+							<li>
+								<label class="container">
+									<input type="checkbox" value="tecnologias" id="tecnologias" onclick="muestracatego(this.value);" checked>
+									<span class="checkmark"></span>
+									<span class="nombre_catego">Tecnolog&iacute;as sustentables</span>
+								</label>
+							</li>
+						</ul>
+					</form>
+				</nav>
+			</div>
+			<a href="calendario"><div class="icon-calendar" id="btn_calendario"></div></a>
+		</main>
+		
+		<footer class="footer">
+			<div class="sociales">
+				<a href="https://goo.gl/38UJVV" class="icon-facebook sociales_link"  target="_blank"></a>
+				<a href="https://goo.gl/Aoh5wM" class="icon-instagram sociales_link"  target="_blank"></a>
+				<a href="https://goo.gl/5QYPLT" class="icon-twitter sociales_link"  target="_blank"></a>
+				<!-- <a href="" class="icon-youtube sociales_link"  target="_blank"></a>
+				<a href="" class="icon-vimeo sociales_link"  target="_blank"></a> -->
+				<a href="https://goo.gl/kp69Qt" class="icon-pinterest sociales_link"  target="_blank"></a>
+				<a href="https://goo.gl/MYSamA" class="icon-gplus sociales_link"  target="_blank"></a>
+				<!-- <a href="" class="icon-snapchat sociales_link"></a> -->
+			</div>
+		</footer>
+		
+		<script type="text/javascript" src="js/despliega_menu.js"></script>
+		<script type="text/javascript" src="js/gmap.js"></script>
+		
+	</body>
+	
+</html>
